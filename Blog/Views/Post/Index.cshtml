@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Blog.ViewModels.PostViewModel>
+
+<h1>Lista de Posts</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Resumo</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>    
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.Titulo</td>
+                <td>@post.Resumo</td>
+                <td>@post.Categoria</td>
+            </tr>            
+        }
+    </tbody>
+</table>
+
