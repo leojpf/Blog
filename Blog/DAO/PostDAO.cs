@@ -1,8 +1,6 @@
-﻿using Blog.Infra;
-using Blog.ViewModels;
+﻿using Blog.ViewModels;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace Blog.DAO
 {
@@ -20,9 +18,22 @@ namespace Blog.DAO
             string query = "Insert into Posts (Titulo, Resumo, Categoria)" +
                           "Values (@1,@2,@3)";
             cmd.CommandText = query;
-            cmd.Parameters.Add(new SqlParameter("1", p.Titulo));
-            cmd.Parameters.Add(new SqlParameter("2", p.Resumo));
-            cmd.Parameters.Add(new SqlParameter("3", p.Categoria));
+
+            var prmTitulo = cmd.CreateParameter();
+            prmTitulo.ParameterName = "Titulo";
+            prmTitulo.Value = p.Titulo;
+            cmd.Parameters.Add(prmTitulo);
+
+            var prmResumo = cmd.CreateParameter();
+            prmTitulo.ParameterName = "Resumo";
+            prmTitulo.Value = p.Resumo;
+            cmd.Parameters.Add(prmResumo);
+
+            var prmRCategoria = cmd.CreateParameter();
+            prmTitulo.ParameterName = "Categoria";
+            prmTitulo.Value = p.Categoria;
+            cmd.Parameters.Add(prmRCategoria);
+
             cmd.ExecuteNonQuery();
         }
 

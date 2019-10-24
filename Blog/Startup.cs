@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Blog.DAO;
+﻿using Blog.DAO;
 using Blog.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,8 +29,11 @@ namespace Blog
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             var strconx = Configuration.GetConnectionString("BlogDB");
-            services.AddScoped<PostDAO>();
-            services.AddScoped<IDbConnection>(s => ConnectionFactory.CriaConexaoAberta(strconx));
+            //services.AddScoped<PostDAO>();
+            //services.AddScoped<IDbConnection>(s => ConnectionFactory.CriaConexaoAberta(strconx));
+            services.AddScoped<PostDAONovo>();
+            services.AddDbContext<BlogContext>(s => s.UseSqlServer(strconx));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
         }
 

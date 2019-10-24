@@ -12,17 +12,16 @@ namespace Blog.Controllers
 {
     public class PostController : Controller
     {
-        List<PostViewModel> lista = new List<PostViewModel>();
-        PostDAO dao;
-        public PostController(PostDAO Dao)
+        //PostDAO dao;
+        PostDAONovo dao;
+        public PostController(PostDAONovo Dao)
         {
             this.dao = Dao;
         }
 
         public IActionResult Index()
         {
-            return View(dao.Listar());
-            //return View(lista);
+            return View(dao.Listar());            
         }
 
         public IActionResult Novo()
@@ -30,12 +29,28 @@ namespace Blog.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Adiciona(PostViewModel p)
+        public IActionResult Adiciona(PostModel p)
         {
             dao.Adiciona(p);
-            return View("Index", dao.Listar());
-            
+            return View("Index", dao.Listar());            
         }
+        public IActionResult Excluir(PostModel p)
+        {
+            dao.Excluir(p);
+            return View("Index", dao.Listar());
+        }
+        public IActionResult Alterar(PostModel p)
+        {
+            return View(dao.ListarUm(p));
+
+        }
+        public IActionResult Alterars(PostModel p)
+        {
+            dao.Alterar(p);
+            return View("Index", dao.Listar());
+
+        }
+
     }
 }
 

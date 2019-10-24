@@ -1,0 +1,15 @@
+﻿@model Blog.Models.PostModel
+<h1>Alterar Post</h1>
+<form action="/Post/Alterars" method="post">
+    <label>Titulo</label>
+    <input name="Titulo" value= @Model.Titulo />
+    <br />
+    <label>Resumo</label>
+    <input name="Resumo"  value=@Model.Resumo/>
+    <br />
+    <label>Categoria</label>
+    <input name="Categoria" value=@Model.Categoria/>
+    <br />
+    <button>Alterar</button>
+    <input name="Id" value=@Model.Id  type="hidden"/>
+</form>

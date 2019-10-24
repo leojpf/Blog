@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Blog.ViewModels.PostViewModel>
+﻿@model IEnumerable<Blog.Models.PostModel>
 
 <h1>Lista de Posts</h1>
 
@@ -17,6 +17,8 @@
                 <td>@post.Titulo</td>
                 <td>@post.Resumo</td>
                 <td>@post.Categoria</td>
+                <td>@Html.ActionLink("Alterar", "Alterar",  new { id = post.Id })</td>
+                <td>@Html.ActionLink("Excluir", "Excluir", new { id = post.Id })</td>
             </tr>            
         }
     </tbody>
