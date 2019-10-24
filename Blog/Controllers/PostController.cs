@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DAO;
+using Blog.Models;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,27 +13,30 @@ namespace Blog.Controllers
     public class PostController : Controller
     {
         List<PostViewModel> lista = new List<PostViewModel>();
-        public PostController()
+        PostDAO dao;
+        public PostController(PostDAO Dao)
         {
-            lista.Add(new PostViewModel("HP 1", "Resumo_HP1 ", " Categoria_HP1"));
-            lista.Add(new PostViewModel("HP 2", "Resumo_HP2 ", " Categoria_HP2"));
-            lista.Add(new PostViewModel("HP 3", "Resumo_HP3 ", " Categoria_HP3"));
+            this.dao = Dao;
         }
 
         public IActionResult Index()
         {
-            return View(lista);
+            return View(dao.Listar());
+            //return View(lista);
         }
 
         public IActionResult Novo()
         {
             return View();
         }
-
-        public IActionResult Adiciona(string titulo, string resumo, string categoria)
+        [HttpPost]
+        public IActionResult Adiciona(PostViewModel p)
         {
-            lista.Add(new PostViewModel(titulo, resumo, categoria));
-            return View("Index", lista);
+            dao.Adiciona(p);
+            return View("Index", dao.Listar());
+            
         }
     }
 }
+
+////Idbcommand IdataReader

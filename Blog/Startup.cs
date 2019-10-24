@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DAO;
+using Blog.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,8 +32,9 @@ namespace Blog
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
+            var strconx = Configuration.GetConnectionString("BlogDB");
+            services.AddScoped<PostDAO>();
+            services.AddScoped<IDbConnection>(s => ConnectionFactory.CriaConexaoAberta(strconx));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
         }
 
@@ -53,7 +57,7 @@ namespace Blog
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Post}/{action=Index}/{id?}");
             });
         }
     }

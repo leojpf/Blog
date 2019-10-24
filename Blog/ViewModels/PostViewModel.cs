@@ -7,11 +7,15 @@ namespace Blog.ViewModels
 {
     public class PostViewModel
     {
-        public PostViewModel(string titulo, string resumo, string categoria)
+        public PostViewModel()
         {
-            Titulo = titulo;
-            Categoria = categoria;
-            Resumo = resumo;
+        }
+
+        public PostViewModel(PostViewModel p)
+        {
+            Titulo = p.Titulo;
+            Resumo = p.Resumo;
+            Categoria = p.Categoria;
         }
 
         public string Titulo { get; set; }
