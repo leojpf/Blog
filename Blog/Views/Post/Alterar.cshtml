@@ -2,14 +2,16 @@
 <h1>Alterar Post</h1>
 <form action="/Post/Alterars" method="post">
     <label>Titulo</label>
-    <input name="Titulo" value= @Model.Titulo />
+    <input name="Titulo" value=@Model.Titulo.ToString() />
     <br />
     <label>Resumo</label>
-    <input name="Resumo"  value=@Model.Resumo/>
+    <input name="Resumo" value=@Model.Resumo.ToString() />
     <br />
     <label>Categoria</label>
-    <input name="Categoria" value=@Model.Categoria/>
+    <input name="Categoria" value=@Model.Categoria.ToString() />
+    <input name="Data_Publicacao" value=@string.Format("{0:dd/MM/yyyy}", Model.Data_Publicacao) type="hidden" />
+    <input name="Publicado" value=@Model.Publicado.ToString() type="hidden" />
     <br />
     <button>Alterar</button>
-    <input name="Id" value=@Model.Id  type="hidden"/>
+    <input name="Id" value=@Model.Id type="hidden" />
 </form>

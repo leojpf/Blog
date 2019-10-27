@@ -51,6 +51,12 @@ namespace Blog.Controllers
 
         }
 
+        public IActionResult Publicar(PostModel p)
+        {
+            dao.Publica(p);
+            return View("Index",dao.Listar());
+        }
+
     }
 }
 

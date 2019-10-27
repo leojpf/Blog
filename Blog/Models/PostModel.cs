@@ -12,7 +12,8 @@ namespace Blog.Models
         //public string Texto { get; set; }
         public string Categoria { get; set; }
         public string Resumo { get; set; }
-        //public DateTime Data_Publicacao { get; set; }
+        public DateTime? Data_Publicacao { get; set; }
+        public bool Publicado { get; set; }
         //public string Autor { get; set; }
     }
 }

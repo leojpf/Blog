@@ -29,7 +29,7 @@ namespace Blog.DAO
         }
         public void Alterar(PostModel p)
         {
-            cnx.Posts.Update(p);            
+            cnx.Posts.Update(p);
             cnx.SaveChanges();
         }
 
@@ -42,6 +42,15 @@ namespace Blog.DAO
         public PostModel ListarUm(PostModel p)
         {
             return cnx.Posts.Where(s => s.Id == p.Id).FirstOrDefault();
+        }
+
+        public void Publica(PostModel p)
+        {
+            PostModel post= cnx.Posts.Find(p.Id);
+            post.Publicado = true;
+            post.Data_Publicacao = DateTime.Now;
+            cnx.SaveChanges();
+
         }
     }
 }

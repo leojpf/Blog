@@ -8,18 +8,31 @@
             <th>Titulo</th>
             <th>Resumo</th>
             <th>Categoria</th>
+            <th>Publicado?</th>
+            <th>Ações</th>
         </tr>
     </thead>    
     <tbody>
         @foreach (var post in Model)
         {
-            <tr>
-                <td>@post.Titulo</td>
-                <td>@post.Resumo</td>
-                <td>@post.Categoria</td>
-                <td>@Html.ActionLink("Alterar", "Alterar",  new { id = post.Id })</td>
-                <td>@Html.ActionLink("Excluir", "Excluir", new { id = post.Id })</td>
-            </tr>            
+        <tr>
+            <td>@post.Titulo</td>
+            <td>@post.Resumo</td>
+            <td>@post.Categoria</td>
+            <td>
+                @if (post.Publicado) 
+                {
+                    @Html.Raw(string.Format("{0:dd/MM/yyyy}", post.Data_Publicacao))
+                }
+                else 
+                {
+                    @Html.Raw("Não")
+                }
+            </td>
+            <td>@Html.ActionLink("Alterar", "Alterar", new { id = post.Id })</td>
+            <td>@Html.ActionLink("Excluir", "Excluir", new { id = post.Id })</td>
+            <td>@Html.ActionLink("Publicar", "Publicar", new { id = post.Id })</td>
+        </tr>            
         }
     </tbody>
 </table>
