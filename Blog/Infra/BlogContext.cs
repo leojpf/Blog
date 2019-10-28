@@ -1,5 +1,4 @@
 ﻿using Blog.Models;
-using Blog.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infra
@@ -13,7 +12,6 @@ namespace Blog.Infra
                 
         } 
 
-        public DbSet<PostModel> Posts { get; set; }
-        //public DbSet<PostViewModel> PostVM { get; set; }
+        public DbSet<PostModel> Posts { get; set; }        
     }
 }

@@ -9,9 +9,9 @@
     <br />
     <label>Categoria</label>
     <input name="Categoria" value=@Model.Categoria.ToString() />
-    <input name="Data_Publicacao" value=@string.Format("{0:dd/MM/yyyy}", Model.Data_Publicacao) type="hidden" />
-    <input name="Publicado" value=@Model.Publicado.ToString() type="hidden" />
+    <input name="Data_Publicacao" value="@string.Format("{0:dd/MM/yyyy}", Model.Data_Publicacao)" type="hidden" />
+    <input name="Publicado" value="@Model.Publicado.ToString()" type="hidden" />
     <br />
     <button>Alterar</button>
-    <input name="Id" value=@Model.Id type="hidden" />
+    <input name="Id" value="@Model.Id" type="hidden" />
 </form>

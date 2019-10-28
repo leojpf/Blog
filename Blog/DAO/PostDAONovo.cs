@@ -1,11 +1,8 @@
 ﻿using Blog.Infra;
 using Blog.Models;
-using Blog.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Blog.DAO
 {
@@ -46,11 +43,10 @@ namespace Blog.DAO
 
         public void Publica(PostModel p)
         {
-            PostModel post= cnx.Posts.Find(p.Id);
+            PostModel post = cnx.Posts.Find(p.Id);
             post.Publicado = true;
             post.Data_Publicacao = DateTime.Now;
             cnx.SaveChanges();
-
         }
     }
 }

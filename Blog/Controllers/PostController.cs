@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Blog.DAO;
+﻿using Blog.DAO;
 using Blog.Models;
-using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Controllers
@@ -21,42 +15,52 @@ namespace Blog.Controllers
 
         public IActionResult Index()
         {
-            return View(dao.Listar());            
+            return View(dao.Listar());
         }
 
         public IActionResult Novo()
         {
-            return View();
+            return View(new PostModel());
         }
         [HttpPost]
         public IActionResult Adiciona(PostModel p)
         {
-            dao.Adiciona(p);
-            return View("Index", dao.Listar());            
+            if (ModelState.IsValid)
+            {
+                dao.Adiciona(p);
+                return RedirectToAction("Index");
+            }
+            return View("Novo", p);
+
         }
         public IActionResult Excluir(PostModel p)
         {
             dao.Excluir(p);
-            return View("Index", dao.Listar());
+            return RedirectToAction("Index");
         }
         public IActionResult Alterar(PostModel p)
         {
-            return View(dao.ListarUm(p));
+            if (!p.Publicado && !p.Data_Publicacao.HasValue)
+            {
+                ModelState.AddModelError("Publicacao", "Post ainda não publicado");
+            }
+            if (ModelState.IsValid)
+                return View(dao.ListarUm(p));
+
+            return RedirectToAction("Index", p);
 
         }
         public IActionResult Alterars(PostModel p)
         {
             dao.Alterar(p);
-            return View("Index", dao.Listar());
+            return RedirectToAction("Index");
 
         }
-
         public IActionResult Publicar(PostModel p)
         {
             dao.Publica(p);
-            return View("Index",dao.Listar());
+            return RedirectToAction("Index");
         }
-
     }
 }
 

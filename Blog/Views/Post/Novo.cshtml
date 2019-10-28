@@ -1,13 +1,21 @@
-﻿<h1>Novo Post</h1>
+﻿@model Blog.Models.PostModel
+<h1>Novo Post</h1>
 <form action="/Post/Adiciona" method="post">
     <label>Titulo</label>
-    <input name="Titulo" />
+    @Html.TextBoxFor(p => p.Titulo)
+    @Html.ValidationMessageFor(p => p.Titulo)
     <br />
     <label>Resumo</label>
-    <input name="Resumo" />
+    @Html.TextBoxFor(p => p.Resumo)
+    @Html.ValidationMessageFor(p => p.Resumo)
     <br />
     <label>Categoria</label>
-    <input name="Categoria" />
+    @Html.TextBoxFor(p => p.Categoria)
+    @Html.ValidationMessageFor(p => p.Categoria)
     <br />
     <button>Cadastrar</button>
 </form>
+<script src="~/js/site.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

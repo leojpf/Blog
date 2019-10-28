@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Models
 {
     public class PostModel
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "Digite no máximo 50 caracteres")]
         public string Titulo { get; set; }
-        //public string Texto { get; set; }
+        [Required]
         public string Categoria { get; set; }
+        [Required]
         public string Resumo { get; set; }
         public DateTime? Data_Publicacao { get; set; }
         public bool Publicado { get; set; }
