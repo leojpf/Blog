@@ -1,7 +1,7 @@
 ﻿@model Blog.Models.PostModel
 <h1>Novo Post</h1>
 <form action="/Post/Adiciona" method="post">
-    <label>Titulo</label>
+    @Html.LabelFor(p => p.Titulo)
     @Html.TextBoxFor(p => p.Titulo)
     @Html.ValidationMessageFor(p => p.Titulo)
     <br />
@@ -11,7 +11,7 @@
     <br />
     <label>Categoria</label>
     @Html.TextBoxFor(p => p.Categoria)
-    @Html.ValidationMessageFor(p => p.Categoria)
+    @Html.ValidationMessageFor(p => p.Categoria)    
     <br />
     <button>Cadastrar</button>
 </form>
