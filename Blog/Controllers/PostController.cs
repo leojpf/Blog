@@ -38,17 +38,9 @@ namespace Blog.Controllers
             dao.Excluir(p);
             return RedirectToAction("Index");
         }
-        public IActionResult Alterar(PostModel p)
+        public IActionResult Alterar(int id)
         {
-            if (!p.Publicado && !p.Data_Publicacao.HasValue)
-            {
-                ModelState.AddModelError("Publicacao", "Post ainda não publicado");
-            }
-            if (ModelState.IsValid)
-                return View(dao.ListarUm(p));
-
-            return RedirectToAction("Index", p);
-
+            return View(dao.ListarUm(id));
         }
         public IActionResult Alterars(PostModel p)
         {

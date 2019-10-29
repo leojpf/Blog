@@ -1,18 +1,7 @@
 ﻿@model Blog.Models.PostModel
 <h1>Novo Post</h1>
 <form action="/Post/Adiciona" method="post">
-    @Html.LabelFor(p => p.Titulo)
-    <input asp-for="Titulo" /> 
-    @Html.ValidationMessageFor(p => p.Titulo)
-    <br />
-    <label>Resumo</label>
-    @Html.TextBoxFor(p => p.Resumo)
-    @Html.ValidationMessageFor(p => p.Resumo)
-    <br />
-    <label>Categoria</label>
-    @Html.TextBoxFor(p => p.Categoria)
-    @Html.ValidationMessageFor(p => p.Categoria)    
-    <br />
+    @Html.EditorForModel()
     <button>Cadastrar</button>
 </form>
 <script src="~/js/site.js"></script>

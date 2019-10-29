@@ -36,9 +36,9 @@ namespace Blog.DAO
             cnx.SaveChanges();
         }
 
-        public PostModel ListarUm(PostModel p)
+        public PostModel ListarUm(int p)
         {
-            return cnx.Posts.Where(s => s.Id == p.Id).FirstOrDefault();
+            return cnx.Posts.Where(s => s.Id == p).FirstOrDefault();
         }
 
         public void Publica(PostModel p)

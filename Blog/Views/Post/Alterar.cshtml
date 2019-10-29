@@ -1,17 +1,24 @@
 ﻿@model Blog.Models.PostModel
 <h1>Alterar Post</h1>
-<form action="/Post/Alterars" method="post">
-    <label>Titulo</label>
-    <input name="Titulo" value=@Model.Titulo.ToString() />
+<form asp-controller="Post" asp-action="Alterars" method="post">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" />
+    <span asp-validation-for="Titulo"></span>
     <br />
-    <label>Resumo</label>
-    <input name="Resumo" value=@Model.Resumo.ToString() />
+    <label asp-for="Resumo"></label>
+    <input asp-for="Resumo" />
+    <span asp-validation-for="Resumo"></span>
     <br />
-    <label>Categoria</label>
-    <input name="Categoria" value=@Model.Categoria.ToString() />
-    <input name="Data_Publicacao" value="@string.Format("{0:dd/MM/yyyy}", Model.Data_Publicacao)" type="hidden" />
-    <input name="Publicado" value="@Model.Publicado.ToString()" type="hidden" />
+    <label asp-for="Categoria"></label>
+    <input asp-for="Categoria" />
+    <span asp-validation-for="Categoria"></span>
+    <input asp-for="Data_Publicacao" type="hidden" />
+    <input asp-for="Publicado" type="hidden" />
     <br />
     <button>Alterar</button>
-    <input name="Id" value="@Model.Id" type="hidden" />
+    <input asp-for="Id" type="hidden" />
 </form>
+<script src="~/js/site.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
