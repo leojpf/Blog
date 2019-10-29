@@ -2,7 +2,7 @@
 <h1>Novo Post</h1>
 <form action="/Post/Adiciona" method="post">
     @Html.LabelFor(p => p.Titulo)
-    @Html.TextBoxFor(p => p.Titulo)
+    <input asp-for="Titulo" /> 
     @Html.ValidationMessageFor(p => p.Titulo)
     <br />
     <label>Resumo</label>
