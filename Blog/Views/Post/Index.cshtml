@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             @foreach (var post in Model)
-            {
+            {   
                 <tr>
                     <td>@post.Titulo</td>
                     <td>@post.Resumo</td>
@@ -36,7 +36,6 @@
                     <td><a asp-controller="Post" asp-action="Excluir" asp-route-Id=@post.Id>Excluir</a></td>
                     <td><a asp-controller="Post" asp-action="Publicar" asp-route-Id=@post.Id>Publicar</a></td>
                 </tr>
-
             }
         </tbody>
     </table>

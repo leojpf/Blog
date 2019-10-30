@@ -3,3 +3,16 @@
 <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+    $('input[name="Categoria"]')
+        .autocomplete({
+            minLength: 3,
+            source: function (req, resp) {
+                $.get('/Post/CategoriaAutoComplete'
+                    , { termo: req.term }
+                    , resp);
+            }
+        });
+</script>

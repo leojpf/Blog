@@ -2,31 +2,23 @@
 @section Scripts{
     <partial name="Scripts" />
 }
-<label asp-for="Titulo"></label>
-<input asp-for="Titulo" />
-<span asp-validation-for="Titulo"></span>
+<div class="input-group">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" class="form-control" />
+    <span asp-validation-for="Titulo"></span>
+</div>
 <br />
-<label asp-for="Resumo"></label>
-<input asp-for="Resumo" />
-<span asp-validation-for="Resumo"></span>
+<div class="input-group">
+    <label asp-for="Resumo"></label>
+    <textarea asp-for="Resumo" class="form-control"></textarea>
+    <span asp-validation-for="Resumo"></span>
+</div>
 <br />
-<label asp-for="Categoria"></label>
-<input asp-for="Categoria" autocomplete="off" />
-<span asp-validation-for="Categoria"></span>
+<div class="input-group">
+    <label asp-for="Categoria"></label>
+    <input asp-for="Categoria" class="form-control" autocomplete="off" />
+    <span asp-validation-for="Categoria"></span>
+</div>
 <br />
-<script src="~/js/site.js"></script>
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-<script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
-<script>
-    $('input[name="Categoria"]')
-        .autocomplete({
-            minLength: 3,
-            source: function (req, resp) {
-                $.get('/Post/CategoriaAutoComplete'
-                    , { termo: req.term }
-                    , resp);
-            }
-        });
-</script>
+
+
