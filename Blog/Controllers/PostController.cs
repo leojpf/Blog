@@ -1,6 +1,7 @@
 ﻿using Blog.DAO;
 using Blog.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Blog.Controllers
 {
@@ -52,6 +53,13 @@ namespace Blog.Controllers
         {
             dao.Publica(p);
             return RedirectToAction("Index");
+        }
+        public IActionResult CategoriaAutoComplete(string termo)
+        {
+            return Ok(dao.Listar()
+                .Select(p => p.Categoria)
+                .Distinct()
+                .Where(c => c.Contains(termo)));
         }
     }
 }

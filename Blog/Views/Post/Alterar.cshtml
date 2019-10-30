@@ -1,4 +1,7 @@
 ﻿@model Blog.Models.PostModel
+@section Scripts{
+    <partial name="Scripts" />
+  }
 <h1>Alterar Post</h1>
 <form asp-controller="Post" asp-action="Alterars" method="post">
     <label asp-for="Titulo"></label>
@@ -18,7 +21,4 @@
     <button>Alterar</button>
     <input asp-for="Id" type="hidden" />
 </form>
-<script src="~/js/site.js"></script>
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
