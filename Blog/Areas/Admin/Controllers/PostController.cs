@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace Blog.Controllers
 {
+    [Area("Admin")]
     public class PostController : Controller
     {
         //PostDAO dao;
