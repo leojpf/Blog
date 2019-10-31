@@ -31,7 +31,6 @@
                             @Html.Raw("Não")
                         }
                     </td>
-                    @*<td>@Html.ActionLink("Alterar", "Alterar", new { id = post.Id })</td>*@
                     <td><a asp-controller="Post" asp-action="Alterar" asp-route-Id=@post.Id>Alterar</a></td>
                     <td><a asp-controller="Post" asp-action="Excluir" asp-route-Id=@post.Id>Excluir</a></td>
                     <td><a asp-controller="Post" asp-action="Publicar" asp-route-Id=@post.Id>Publicar</a></td>

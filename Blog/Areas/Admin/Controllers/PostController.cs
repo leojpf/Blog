@@ -1,4 +1,5 @@
 ﻿using Blog.DAO;
+using Blog.Filtros;
 using Blog.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Linq;
 namespace Blog.Controllers
 {
     [Area("Admin")]
+    [AutorizacaoFilter]
     public class PostController : Controller
     {
         //PostDAO dao;

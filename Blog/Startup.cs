@@ -31,7 +31,9 @@ namespace Blog
             var strconx = Configuration.GetConnectionString("BlogDB");
             //services.AddScoped<PostDAO>();
             //services.AddScoped<IDbConnection>(s => ConnectionFactory.CriaConexaoAberta(strconx));
+            services.AddSession();
             services.AddScoped<PostDAONovo>();
+            services.AddScoped<UsuarioDAO>();
             services.AddDbContext<BlogContext>(s => s.UseSqlServer(strconx));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -51,6 +53,7 @@ namespace Blog
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
