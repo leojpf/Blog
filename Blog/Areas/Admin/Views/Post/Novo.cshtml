@@ -3,7 +3,7 @@
     <partial name="Scripts" />
 }
 <h1>Novo Post</h1>
-<form action="/Post/Adiciona" method="post">
+<form asp-action="Adiciona" asp-controller="Post" method="post">
     @Html.EditorForModel()
     <button>Cadastrar</button>
 </form>
