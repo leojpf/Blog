@@ -39,5 +39,11 @@ namespace Blog.Controllers
             ModelState.AddModelError("LoginInvalido", "Usuário não encontrado");
             return View("Login", lvm);
         }
+
+        public IActionResult Logout() 
+        {
+            HttpContext.Session.Remove("Usuario");
+            return View("Login");
+        }
     }
 }
