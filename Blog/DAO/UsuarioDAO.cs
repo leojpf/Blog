@@ -22,5 +22,11 @@ namespace Blog.DAO
              * return cnx.Usuario.FirstOrDefault(p => p.Login == login && p.Senha == senha)
              */
         }
+
+        public void inclui(Usuario u)
+        {
+            cnx.Usuarios.Add(u);            
+        }
+
     }
 }

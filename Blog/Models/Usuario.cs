@@ -19,5 +19,6 @@ namespace Blog.Models
         [Required]
         [StringLength(200)]
         public string Email { get; set; }
+        public IList<PostModel> Posts { get; set; }
     }
 }

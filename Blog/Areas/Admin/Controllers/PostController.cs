@@ -1,7 +1,9 @@
 ﻿using Blog.DAO;
 using Blog.Filtros;
 using Blog.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace Blog.Controllers
@@ -31,6 +33,9 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                var usuario = HttpContext.Session.GetString("Usuario");
+                var usuarioSession = JsonConvert.DeserializeObject<Usuario>(usuario);
+                p.Autor = usuarioSession;
                 dao.Adiciona(p);
                 return RedirectToAction("Index");
             }

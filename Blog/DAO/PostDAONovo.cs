@@ -1,5 +1,6 @@
 ﻿using Blog.Infra;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,14 @@ namespace Blog.DAO
 
         public void Adiciona(PostModel p)
         {
+            cnx.Usuarios.Attach(p.Autor);
             cnx.Posts.Add(p);
             cnx.SaveChanges();
         }
 
         public IEnumerable<PostModel> Listar()
         {
-            return cnx.Posts;
+            return cnx.Posts.Include(p=> p.Autor);
         }
         public void Alterar(PostModel p)
         {

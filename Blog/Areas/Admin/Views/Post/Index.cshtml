@@ -10,6 +10,7 @@
                 <th>Titulo</th>
                 <th>Resumo</th>
                 <th>Categoria</th>
+                <th>Autor</th>
                 <th>Publicado?</th>
                 <th>Ações</th>
             </tr>
@@ -21,6 +22,7 @@
                     <td>@post.Titulo</td>
                     <td>@post.Resumo</td>
                     <td>@post.Categoria</td>
+                    <td>@post.Autor?.Login</td>
                     <td>
                         @if (post.Publicado)
                         {
@@ -38,6 +40,5 @@
             }
         </tbody>
     </table>
-    <br />
-    <a asp-controller="Autenticacao" asp-action="Logout">Logout</a>
+    <br />    
 </form>

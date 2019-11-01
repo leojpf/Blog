@@ -18,5 +18,6 @@ namespace Blog.Models
         public DateTime? Data_Publicacao { get; set; }
         public bool Publicado { get; set; }
         //public string Autor { get; set; }
+        public Usuario Autor { get; set; }
     }
 }
