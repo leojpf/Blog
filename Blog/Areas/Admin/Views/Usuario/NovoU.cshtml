@@ -1,0 +1,9 @@
+﻿@model Blog.Models.Usuario
+@section Scripts{
+    <partial name="Scripts" />
+}
+<h1>Novo Usuario</h1>
+<form asp-action="Adiciona" asp-controller="Usuario" method="post">
+    @Html.EditorForModel()
+    <button>Cadastrar</button>
+</form>

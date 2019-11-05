@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Blog.DAO;
+﻿using Blog.DAO;
+using Blog.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class UsuarioController : Controller
     {
         UsuarioDAO dao;
@@ -14,24 +12,41 @@ namespace Blog.Areas.Admin.Controllers
         {
             this.dao = Dao;
         }
-        public IActionResult Adiciona()
+        public IActionResult Adiciona(Usuario u)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                dao.inclui(u);
+                return RedirectToAction("IndexU");
+            }
+            return View("NovoU", u);
+        }
+        public IActionResult AlterarU(int id)
+        {
+            return View(dao.ListarUm(id));
         }
 
-        public IActionResult Altera()
+        public IActionResult AlterarUs(Usuario u)
         {
-            return View();
+            if (ModelState.IsValid)
+                dao.Alterar(u);
+            return RedirectToAction("IndexU");
         }
 
-        public IActionResult Deleta()
+        public IActionResult DeletarU(Usuario u)
         {
-            return View();
+            dao.Excluir(u);
+            return RedirectToAction("IndexU");
         }
 
-        public IActionResult Index()
+        public IActionResult NovoU()
         {
-            return View();
+            return View(new Usuario());
+        }
+
+        public IActionResult IndexU()
+        {
+            return View(dao.Listar());
         }
     }
 }

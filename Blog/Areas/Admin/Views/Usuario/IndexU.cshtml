@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Blog.Models.Usuario>
+@section Scripts{
+    <partial name="Scripts" />
+}
+<form>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Senha</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Login</td>
+                    <td class="hidetext">@post.Senha</td>
+                    <td>@post.Email</td>                    
+                    <td><a asp-controller="Usuario" asp-action="AlterarU" asp-route-Id=@post.Id>Alterar</a></td>
+                    <td><a asp-controller="Usuario" asp-action="DeletarU" asp-route-Id=@post.Id>Excluir</a></td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+</form>

@@ -1,0 +1,22 @@
+﻿@model Blog.Models.Usuario
+@section Scripts{
+    <partial name="Scripts" />
+}
+<h1>Alterar Usuarios</h1>
+<form asp-controller="Usuario" asp-action="AlterarUs" method="post">
+    <label asp-for="Login"></label>
+    <input asp-for="Login" />
+    <span asp-validation-for="Login"></span>
+    <br />
+    <label asp-for="Senha"></label>
+    <input asp-for="Senha" />
+    <span asp-validation-for="Senha"></span>
+    <br />
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <br />
+    <button>Alterar</button>
+    <input asp-for="Id" type="hidden" />
+</form>
+

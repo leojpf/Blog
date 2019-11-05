@@ -15,6 +15,7 @@ namespace Blog.Models
         public string Login { get; set; }
         [Required]
         [StringLength(100)]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
         [Required]
         [StringLength(200)]

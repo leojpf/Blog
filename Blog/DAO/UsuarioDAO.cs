@@ -25,7 +25,29 @@ namespace Blog.DAO
 
         public void inclui(Usuario u)
         {
-            cnx.Usuarios.Add(u);            
+            cnx.Usuarios.Add(u);
+            cnx.SaveChanges();
+        }
+
+        public void Alterar(Usuario u)
+        {
+            cnx.Usuarios.Update(u);
+            cnx.SaveChanges();
+        }
+
+        public void Excluir(Usuario u)
+        {
+            cnx.Usuarios.Remove(u);
+            cnx.SaveChanges();
+        }
+        public Usuario ListarUm(int u)
+        {
+            return cnx.Usuarios.Where(s => s.Id == u).FirstOrDefault();
+        }
+
+        public IEnumerable<Usuario> Listar()
+        {
+            return cnx.Usuarios.Where(s => s.Id > 0);
         }
 
     }
